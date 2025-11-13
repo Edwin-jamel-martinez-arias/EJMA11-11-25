@@ -1,11 +1,19 @@
-<!-- Indica que este archivo utiliza la estructura definida en base.html -->
 {% extends 'base.html' %}
 
-<!-- Rellena el bloque 'title' definido en base.html -->
 {% block title %}Inicio - Pokedex{% endblock %}
 
-<!-- Rellena el bloque 'content' definido en base.html -->
 {% block content %}
-    <h2>Bienvenido a tu Pokedex</h2>
-    <p>¡Explora el mundo Pokémon!</p>
+    <h2>Encuentra cualquier pokemon </h2>
+    <form action="{{ url_for('search_pokemon') }}" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="pokemon_name" class="form-label text-muted">Nombre o ID del Pokémon:</label>
+                        <input type="text" class="form-control form-control-lg rounded-3" id="pokemon_name" name="pokemon_name" required >
+                        <div class="invalid-feedback">
+                            Por favor, ingresa un nombre o ID de Pokémon.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary w-100 btn-lg shadow-sm mt-3 rounded-3">
+                        <i class="bi bi-search me-1"></i> buscar
+                    </button>
+                </form>
 {% endblock %}
